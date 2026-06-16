@@ -25,10 +25,3 @@ user2 = {
 
 print(executeTask(userId=1,user=user1))
 print(executeTask(userId=2,user=user2))
-
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/humamul/AI-Learning.git
-git push -u origin main
