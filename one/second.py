@@ -8,7 +8,7 @@ def requireAdmin(orgFunction):
 
         return orgFunction(*args,**kwargs)   #forget 2 orgFuntion instead of orgFunction with () brackets  # forget 3 : args,kwargs in bracket
         #forget4 * astric signs
-    return wrapper
+    return wrapper #Forget5 wrapper without brackets return
 
 @requireAdmin
 def executeTask(userId,user):
