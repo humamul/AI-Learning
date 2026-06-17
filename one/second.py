@@ -1,4 +1,6 @@
+from functools import wraps
 def requireAdmin(orgFunction):
+    @wraps(orgFunction) # executeTask function name changes to wrapper in meta data without this annotation
     def wrapper(*args,**kwargs):
         print(f"Entering the admin checking process")
         user = kwargs.get('user') # forget 1
@@ -25,3 +27,4 @@ user2 = {
 
 print(executeTask(userId=1,user=user1))
 print(executeTask(userId=2,user=user2))
+print(f"Function ka asli naam kya hai? -> {executeTask.__name__}")
