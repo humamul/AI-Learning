@@ -19,8 +19,10 @@ for _ in range(10):
     X_list.append([1, 0, 0]) # Weekend, Chhota Bill, Bina Chashma -> Tip = 0
     X_list.append([0, 0, 0]) # Weekday, Chhota Bill, Bina Chashma -> Tip = 0
     X_list.append([1, 0, 1]) # 🚨 Noise: Weekend, Chhota Bill, Chashma Pehna -> PAR TIP NAHI DI (0)
-    # X_list.append([0, 0, 0]) # 🚨 Noise: Weekday, Chhota Bill, Chashma Pehna -> PAR TIP NAHI DI (0)
-    y_list.extend([0, 0, 0])
+    X_list.append([0, 0, 0]) # 🚨 Noise: Weekday, Chhota Bill, Chashma Pehna -> PAR TIP NAHI DI (0)
+    # learning 1 : agar upar chashma = 1 krdete h to ek esa data mil 
+    # jaiga jo bolega weekday p chote bill p chashme k sath tip nhi di to is wjh se ans 0 ayga
+    y_list.extend([0, 0, 0, 0])
 
 # C. 🚨 HAMARA AKELA OUTLIER (101th Customer)
 # Chhota bill hai, chashma pehna hai, par isne khushi mein tip DE DI (1)
@@ -35,7 +37,7 @@ print(f"Total Rows: {len(X)}")
 print(f"Chhote bill wale total log jinhone chashma pehna hai: {sum((X[:,1]==0) & (X[:,2]==1))}")
 
 # --- 2. RANDOM FOREST TRAINING (Khula Saand Mode - No max_depth) ---
-rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
+rf_model = RandomForestClassifier(n_estimators=100, random_state=42,min_samples_leaf=2)
 rf_model.fit(X, y)
 
 # --- 3. NEW CANDIDATE TEST ---
